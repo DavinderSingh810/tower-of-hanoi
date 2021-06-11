@@ -1,0 +1,25 @@
+#include <stdio.h>
+int count =0;
+void towers(int n, char a, char c, char b)
+{
+    if (n == 1)
+    {
+        printf("\n Move disk 1 from tower %c to tower %c", a, c);
+        count=count+1;
+        return;
+    }
+    towers(n - 1, a,b, c);
+    printf("\n Move disk %d from tower %c to tower %c", n, a, c);
+    count=count+1;
+    towers(n - 1, b, c,a);
+}
+int main()
+{
+    int n;
+    printf("Enter the number of disks : ");
+    scanf("%d", &n);
+    printf("The sequence of moves involved in the Tower of Hanoi are :\n");
+    towers(n, 'A', 'C', 'B');
+    printf("\nMinimum moves required are: %d\n",count);
+    return 0;
+}
